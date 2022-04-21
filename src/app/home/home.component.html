@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shop Homepage - Start Bootstrap Template</title>
+        <!-- Favicon-->
+    </head>
+    <body>
+      <!-- Navigation-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="">EACommerce</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="">All Products</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="">New Arrivals</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div style="padding:10px">
+                  <button class="btn btn-outline-dark" (click)="proceedToPay()">
+                    <i class="bi-cart-fill me-1"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{cart}}</span>
+                  </button>
+                </div>
+
+                <div style="padding:10px">
+                  <button class="btn btn-outline-dark" (click)="logOut()">
+                    Log Out
+                  </button>
+                </div>
+            </div>
+        </div>
+      </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Shop for your future</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">With your past income as present for someone</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="../assets/item.png" alt="Product 1 image" />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{items[0].name}}</h5>
+                                    <!-- Product price-->
+                                    ${{items[0].price}}
+                                </div>
+
+
+                            </div>
+
+                            <div class="text-center" style="padding:05%">
+
+                              <button class="btn btn-outline-dark mt-auto" id="minus" [disabled]="qnts[0] == 0" (click)="onMinus(0)" >-</button>
+                              <label class="mt-auto" style="padding:10px" id="qnt0">{{qnts[0]}}</label>
+                              <button class="btn btn-outline-dark mt-auto" type="submit" id="plus" (click)="onPlus(0)">+</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="../assets/item.png" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{items[1].name}}</h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    <!-- Product price-->
+                                    <span class="text-muted text-decoration-line-through">${{items[1].price * 1.3}}</span>
+                                    ${{items[1].price}}
+                                </div>
+                            </div>
+                            <div class="text-center" style="padding:05%">
+
+                              <button class="btn btn-outline-dark mt-auto" id="minus" [disabled]="qnts[1] == 0" (click)="onMinus(1)">-</button>
+                              <label class="mt-auto" style="padding:10px" id="qnt0">{{qnts[1]}}</label>
+                              <button class="btn btn-outline-dark mt-auto" id="plus" (click)="onPlus(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="../assets/item.png" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{items[2].name}}</h5>
+                                    <!-- Product price-->
+                                    <span class="text-muted text-decoration-line-through">${{items[2].price*1.5}}</span>
+                                    ${{items[2].price}}
+                                </div>
+                            </div>
+                            <div class="text-center" style="padding:05%">
+
+                              <button class="btn btn-outline-dark mt-auto" id="minus" [disabled]="qnts[2] == 0" (click)="onMinus(2)">-</button>
+                              <label class="mt-auto" style="padding:10px" id="qnt0">{{qnts[2]}}</label>
+                              <button class="btn btn-outline-dark mt-auto" id="plus" (click)="onPlus(2)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="../assets/item.png" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{items[3].name}}</h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    <!-- Product price-->
+                                    ${{items[3].price}}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="text-center" style="padding:05%">
+
+                              <button class="btn btn-outline-dark mt-auto" id="minus" [disabled]="qnts[3] == 0" (click)="onMinus(3)">-</button>
+                              <label class="mt-auto" style="padding:10px" id="qnt0">{{qnts[3]}}</label>
+                              <button class="btn btn-outline-dark mt-auto" id="plus" (click)="onPlus(3)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="../assets/item.png" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{items[4].name}}</h5>
+                                    <!-- Product price-->
+                                    <span class="text-muted text-decoration-line-through">${{items[4].price*1.7}}</span>
+                                    ${{items[4].price}}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="text-center" style="padding:05%">
+
+                              <button class="btn btn-outline-dark mt-auto" id="minus" [disabled]="qnts[4] == 0" (click)="onMinus(4)">-</button>
+                              <label class="mt-auto" style="padding:10px" id="qnt0">{{qnts[4]}}</label>
+                              <button class="btn btn-outline-dark mt-auto" id="plus" (click)="onPlus(4)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="../assets/item.png" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{items[5].name}}</h5>
+                                    <!-- Product price-->
+                                    ${{items[5].price}}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="text-center" style="padding:05%">
+
+                              <button class="btn btn-outline-dark mt-auto" id="minus" [disabled]="qnts[5] == 0" (click)="onMinus(5)">-</button>
+                              <label class="mt-auto" style="padding:10px" id="qnt0">{{qnts[5]}}</label>
+                              <button class="btn btn-outline-dark mt-auto" id="plus" (click)="onPlus(5)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="../assets/item.png" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{items[6].name}}</h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    <!-- Product price-->
+                                    <span class="text-muted text-decoration-line-through">${{items[6].price*1.2}}</span>
+                                    ${{items[6].price}}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="text-center" style="padding:05%">
+
+                              <button class="btn btn-outline-dark mt-auto" id="minus" [disabled]="qnts[6] == 0" (click)="onMinus(6)">-</button>
+                              <label class="mt-auto" style="padding:10px" id="qnt0">{{qnts[6]}}</label>
+                              <button class="btn btn-outline-dark mt-auto" id="plus" (click)="onPlus(6)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="../assets/item.png" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{items[7].name}}</h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    <!-- Product price-->
+                                    ${{items[7].price}}
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="text-center" style="padding:05%">
+
+                              <button class="btn btn-outline-dark mt-auto" id="minus" [disabled]="qnts[7] == 0" (click)="onMinus(7)">-</button>
+                              <label class="mt-auto" style="padding:10px" >{{qnts[7]}}</label>
+                              <button class="btn btn-outline-dark mt-auto" id="plus" (click)="onPlus(7)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; nobody 2022</p></div>
+        </footer>
+
+    </body>
+</html>

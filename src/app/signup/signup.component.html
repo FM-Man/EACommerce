@@ -1,0 +1,58 @@
+<body>
+  <div class="full-page">
+      <div class="navbar">
+
+          <nav>
+              <ul id='MenuItems'>
+                  <li><a href='#'>Home</a></li>
+                  <li><a href='#'>About us</a></li>
+                  <li><button class='loginbtn' style="width:auto" (click)="toLogin()">Log In</button></li>
+              </ul>
+          </nav>
+      </div>
+      <div class='login-page'>
+          <div class="form-box">
+              <div class='button-box'>
+
+                  <!-- <h1>Log In</h1> -->
+                  <!-- <button type='button' onclick='login()' class='toggle-btn'>Log In</button> -->
+                  <!-- <button type='button' onclick='register()' class='toggle-btn'>Register</button> -->
+              </div>
+              <form [formGroup]="angForm" class='input-group-register' (ngSubmit)="postdata(angForm)" autocomplete="off">
+                  <input type='text' class='input-field' placeholder='First Name' name="name" formControlName="name" autocomplete="off" required>
+                  <input type='text' class='input-field' placeholder='User ID ' name="userid" formControlName="userid" autocomplete="off" required>
+                  <input type='email' class='input-field' placeholder='Email Id' name="email" formControlName="email" autocomplete="off" required>
+                  <input type='text' class='input-field' placeholder='Phone' name="phone" formControlName="phone" autocomplete="off" required>
+                  <input type='password' class='input-field' placeholder='Enter Password' name="password" formControlName="password" autocomplete="off" required>
+                  <br><br><br>
+                  <button type='submit' class='submit-btn'>Register</button>
+              </form>
+          </div>
+      </div>
+  </div>
+  <!-- <script>
+      var x = document.getElementById('login');
+      var y = document.getElementById('register');
+      var z = document.getElementById('btn');
+
+      function register() {
+          x.style.left = '-400px';
+          y.style.left = '50px';
+          z.style.left = '110px';
+      }
+
+      function login() {
+          x.style.left = '50px';
+          y.style.left = '450px';
+          z.style.left = '0px';
+      }
+  </script>
+  <script>
+      var modal = document.getElementById('login-form');
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+  </script> -->
+</body>
